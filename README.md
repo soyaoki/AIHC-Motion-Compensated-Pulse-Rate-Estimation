@@ -15,7 +15,7 @@ A core feature that many users expect from their wearable devices is pulse rate 
 ## Physiological Mechanics of Pulse Rate Estimation
 Pulse rate is typically estimated by using the PPG sensor. When the ventricles contract, the capilaries in the wrist fill with blood. The (typically green) light emitted by the PPG sensor is absorbed by red blood cells in these capilaries and the photodetector will see the drop in reflected light. When the blood returns to the heart, fewer red blood cells in the wrist absorb the light and the photodetector sees an increase in reflected light. The period of this oscillating waveform is the pulse rate.
 
-![PPG Mechanics](ppg_mechanics.png)
+![PPG Mechanics](ppg-mechanics.png)
   
 However, the heart beating is not the only phenomenon that modulates the PPG signal. Blood in the wrist is fluid, and arm movement will cause the blood to move correspondingly. During exercise, like walking or running, we see another periodic signal in the PPG due to this arm motion. Our pulse rate estimator  has to be careful not to confuse this periodic signal with the pulse rate.  
   
@@ -28,7 +28,7 @@ Many machine learning algorithms produce outputs that can be used to estimate th
 
 In pulse rate estimation, having a confidence value can be useful if a user wants just a handful of high-quality pulse rate estimate per night. They can use the confidence algorithm to select the 20 most confident estimates at night and ignore the rest of the outputs. Confidence estimates can also be used to set the point on the error curve that we want to operate at by sacrificing the number of estimates that are considered valid. There is a trade-off between *availability* and error. For example if we want to operate at 10% availability, we look at our training dataset to determine the condince threshold for which 10% of the estimates pass. Then if only if an estimate's confidence value is above that threshold do we consider it valid. See the error vs. availability curve below.
 
-![Error vs. Availability](error_vs_availability.png)
+![Error vs. Availability](error-vs-availability.png)
 
 This plot is created by computing the mean absolute error at all -- or at least 100 of -- the confidence thresholds in the dataset.
 
